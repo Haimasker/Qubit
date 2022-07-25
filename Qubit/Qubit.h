@@ -46,40 +46,40 @@ public:
 
 	Matrix				getAmplitudes();
 	unsigned			getQubitNumber();
-	std::vector<double>	getProbabilities();
+	std::vector<double>		getProbabilities();
 
 	static Matrix	identity();
-	static bool		identity(Qubit&);
+	static bool	identity(Qubit&);
 
 	static Matrix	pauliX();
 	static bool		pauliX(Qubit&);
 
 	static Matrix	pauliY();
-	static bool		pauliY(Qubit&);
+	static bool	pauliY(Qubit&);
 
 	static Matrix	pauliZ();
-	static bool		pauliZ(Qubit&);
+	static bool	pauliZ(Qubit&);
 
 	static Matrix	hadamard();
-	static bool		hadamard(Qubit&);
+	static bool	hadamard(Qubit&);
 
 	static Matrix	phaseShift(double);
-	static bool		phaseShift(Qubit&, double);
+	static bool	phaseShift(Qubit&, double);
 
 	static Matrix	swap();
-	static bool		swap(Qubit&);
+	static bool	swap(Qubit&);
 
 	static Matrix	rotX(double);
-	static bool		rotX(Qubit&, double);
+	static bool	rotX(Qubit&, double);
 
 	static Matrix	rotY(double);
-	static bool		rotY(Qubit&, double);
+	static bool	rotY(Qubit&, double);
 
 	static Matrix	rotZ(double);
-	static bool		rotZ(Qubit&, double);
+	static bool	rotZ(Qubit&, double);
 
 	static Matrix	controlled(unsigned, std::string, std::string = "");
-	static bool		controlled(Qubit&, unsigned, std::string, std::string = "");
+	static bool	controlled(Qubit&, unsigned, std::string, std::string = "");
 
 	void measure();
 
