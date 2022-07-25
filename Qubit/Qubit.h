@@ -41,6 +41,7 @@ public:
 	bool operator == (const Matrix&);
 	bool operator != (const Matrix&);
 
+	void distribute(std::vector<int>);
 	void concentrate(unsigned);
 	void reset();
 
@@ -52,7 +53,7 @@ public:
 	static bool	identity(Qubit&);
 
 	static Matrix	pauliX();
-	static bool		pauliX(Qubit&);
+	static bool	pauliX(Qubit&);
 
 	static Matrix	pauliY();
 	static bool	pauliY(Qubit&);

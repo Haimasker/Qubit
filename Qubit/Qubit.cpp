@@ -83,9 +83,22 @@ bool Qubit::operator != (const Matrix& m) {
 	return this->amplitudes != m;
 }
 
+void Qubit::distribute(std::vector<int> indices) {
+	int count = 0;
+	for (int i : indices)
+		count += (int)(i > -(int)pow(2, this->qubitNumber) && i < (int)pow(2, this->qubitNumber));
+	std::cout << count << "\n";
+	for (unsigned i = 0; i < this->amplitudes.getCols(); i++)
+		this->amplitudes(0, i) = 0;
+	for (int i : indices)
+		this->amplitudes(0, i) = (i < 0) ? sqrt(1.0 / count) : -sqrt(1.0 / count);
+	return;
+}
+
 void Qubit::concentrate(unsigned index) {
 	for (unsigned i = 0; i < this->amplitudes.getMat()[0].size(); i++)
 		this->amplitudes.getMat()[0][i % this->amplitudes.getMat()[0].size()] = 0 + 1 * (i == index);
+	return;
 }
 
 void Qubit::reset() {
@@ -309,6 +322,7 @@ void Qubit::printProbabilities() {
 	for (double i : prob)
 		std::cout << i << ' ';
 	std::cout << "\n";
+	return;
 }
 
 std::ostream& operator << (std::ostream& out, Qubit& q) {
