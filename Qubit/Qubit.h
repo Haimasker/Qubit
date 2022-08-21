@@ -22,6 +22,9 @@ private:
 public:
 	Qubit(unsigned = 0) noexcept;
 	Qubit(const Qubit&) noexcept;
+	Qubit&	operator = (const Qubit&) noexcept;
+	Qubit(const Qubit&&) noexcept;
+	Qubit&	operator = (const Qubit&&) noexcept;
 
 	virtual ~Qubit();
 
