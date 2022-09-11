@@ -111,7 +111,6 @@ void Qubit::distribute(std::vector<int> indices) {
 	int count = 0;
 	for (int i : indices)
 		count += (int)(i > -(int)pow(2, this->qubitNumber) && i < (int)pow(2, this->qubitNumber));
-	std::cout << count << "\n";
 	for (unsigned i = 0; i < this->amplitudes.getCols(); i++)
 		this->amplitudes(0, i) = 0;
 	for (int i : indices)
