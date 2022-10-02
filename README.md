@@ -58,12 +58,12 @@ All of `Qubit` class fields are private <br>
 
 1. `qubitNumber` - number of qubits in the register.
 ```cpp
-unsigned	qubitNumber;
+unsigned qubitNumber;
 ```
 
 2. `amplitudes` - probability amplitudes of the register.
 ```cpp
-Matrix		amplitudes;
+Matrix amplitudes;
 ```
 
 3. `generator` - random generator for qubit state measuring.
@@ -105,7 +105,7 @@ virtual ~Qubit();
 1. Call operator for non-const objects receiving `index` of the qubit state. <br>
 Indices are cycled, so there is no out-of-range error.
 ```cpp
-std::complex<double>&		operator () (const unsigned&);
+std::complex<double>& operator () (const unsigned&);
 ```
 
 <br>
@@ -113,14 +113,14 @@ std::complex<double>&		operator () (const unsigned&);
 2. Call operator for const objects receiving `index` of the qubit state. <br>
 Indices are cycled, so there is no out-of-range error.
 ```cpp
-const std::complex<double>&	operator () (const unsigned&) const;
+const std::complex<double>& operator () (const unsigned&) const;
 ```
 
 <br>
 
 3. Copy assignment operator.
 ```cpp
-Qubit&	operator = (const Qubit&);
+Qubit& operator = (const Qubit&);
 ```
 
 <br>
@@ -128,7 +128,7 @@ Qubit&	operator = (const Qubit&);
 4. Multiplication operator. <br>
 Merges qubits registers.
 ```cpp
-Qubit	operator * (const Qubit&);
+Qubit operator * (const Qubit&);
 ```
 
 <br>
@@ -136,7 +136,7 @@ Qubit	operator * (const Qubit&);
 5. Multiplication assignment operator. <br>
 Merges qubits registers.
 ```cpp
-Qubit&	operator *= (const Qubit&);
+Qubit& operator *= (const Qubit&);
 ```
 
 <br>
@@ -160,7 +160,7 @@ bool operator != (const Qubit&);
 8. Multiplication operator. <br>
 Multiplies `this->amplitudes` by given `Matrix`.
 ```cpp
-Qubit	operator * (Matrix&);
+Qubit operator * (Matrix&);
 ```
 
 <br>
@@ -168,7 +168,7 @@ Qubit	operator * (Matrix&);
 9. Multiplication assignment operator. <br>
 Multiplies `this->amplitudes` by given `Matrix`.
 ```cpp
-Qubit&	operator *= (Matrix&);
+Qubit& operator *= (Matrix&);
 ```
 
 10. Equal operator. <br>
@@ -201,7 +201,7 @@ friend std::ostream& operator << (std::ostream&, Qubit&);
 1. `Identity gate`. <br>
 Returns an identity matrix with the size of a qubit register.
 ```cpp
-static Matrix	identity();
+static Matrix identity();
 ```
 
 <br>
@@ -210,7 +210,7 @@ static Matrix	identity();
 Applies an identity matrix to `this->amplitudes`. <br>
 Returns `true` because this is always possible.
 ```cpp
-static Matrix	identity();
+static bool identity(Qubit&);
 ```
 
 <br>
@@ -218,7 +218,7 @@ static Matrix	identity();
 3. `Pauli X gate`. <br>
 Returns matrix representing Pauli X gate.
 ```cpp
-static Matrix	pauliX();
+static Matrix pauliX();
 ```
 
 <br>
@@ -227,7 +227,7 @@ static Matrix	pauliX();
 Applies Pauli X gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		pauliX(Qubit&);
+static bool pauliX(Qubit&);
 ```
 
 <br>
@@ -235,7 +235,7 @@ static bool		pauliX(Qubit&);
 5. `Pauli Y gate`. <br>
 Returns matrix representing Pauli Y gate.
 ```cpp
-static Matrix	pauliY();
+static Matrix pauliY();
 ```
 
 <br>
@@ -244,7 +244,7 @@ static Matrix	pauliY();
 Applies Pauli Y gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		pauliY(Qubit&);
+static bool pauliY(Qubit&);
 ```
 
 <br>
@@ -252,7 +252,7 @@ static bool		pauliY(Qubit&);
 7. `Pauli Z gate`. <br>
 Returns matrix representing Pauli Z gate.
 ```cpp
-static Matrix	pauliZ();
+static Matrix pauliZ();
 ```
 
 <br>
@@ -261,7 +261,7 @@ static Matrix	pauliZ();
 Applies Pauli Z gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		pauliZ(Qubit&);
+static bool pauliZ(Qubit&);
 ```
 
 <br>
@@ -269,7 +269,7 @@ static bool		pauliZ(Qubit&);
 9. `Hadamard gate`. <br>
 Returns matrix representing Hadamard gate.
 ```cpp
-static Matrix	hadamard();
+static Matrix hadamard();
 ```
 
 <br>
@@ -278,7 +278,7 @@ static Matrix	hadamard();
 Applies Hadamard gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		hadamard(Qubit&);
+static bool hadamard(Qubit&);
 ```
 
 <br>
@@ -286,7 +286,7 @@ static bool		hadamard(Qubit&);
 11. `Phase shift gate`. <br>
 Returns matrix representing phase shift gate with given `angle`.
 ```cpp
-static Matrix	phaseShift(double);
+static Matrix phaseShift(double);
 ```
 
 <br>
@@ -295,7 +295,7 @@ static Matrix	phaseShift(double);
 Applies phase shift gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		phaseShift(Qubit&, double);
+static bool phaseShift(Qubit&, double);
 ```
 
 <br>
@@ -303,7 +303,7 @@ static bool		phaseShift(Qubit&, double);
 13. `Swap gate`. <br>
 Returns matrix representing swap gate.
 ```cpp
-static Matrix	swap();
+static Matrix swap();
 ```
 
 <br>
@@ -312,7 +312,7 @@ static Matrix	swap();
 Applies swap gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		swap(Qubit&);
+static bool swap(Qubit&);
 ```
 
 <br>
@@ -320,7 +320,7 @@ static bool		swap(Qubit&);
 15. `Rotation X gate`. <br>
 Returns matrix representing rotation X gate with given `angle`.
 ```cpp
-static Matrix	rotX(double);
+static Matrix rotX(double);
 ```
 
 <br>
@@ -329,7 +329,7 @@ static Matrix	rotX(double);
 Applies rotation X gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		rotX(Qubit&, double);
+static bool rotX(Qubit&, double);
 ```
 
 <br>
@@ -337,7 +337,7 @@ static bool		rotX(Qubit&, double);
 17. `Rotation Y gate`. <br>
 Returns matrix representing rotation Y gate with given `angle`.
 ```cpp
-static Matrix	rotY(double);
+static Matrix rotY(double);
 ```
 
 <br>
@@ -346,7 +346,7 @@ static Matrix	rotY(double);
 Applies rotation Y gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		rotY(Qubit&, double);
+static bool rotY(Qubit&, double);
 ```
 
 <br>
@@ -354,7 +354,7 @@ static bool		rotY(Qubit&, double);
 19. `Rotation Z gate`. <br>
 Returns matrix representing rotation Z gate with given `angle`.
 ```cpp
-static Matrix	rotZ(double);
+static Matrix rotZ(double);
 ```
 
 <br>
@@ -363,7 +363,7 @@ static Matrix	rotZ(double);
 Applies rotation Z gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		rotZ(Qubit&, double);
+static bool rotZ(Qubit&, double);
 ```
 
 <br>
@@ -374,7 +374,7 @@ First parameter is the total number of qubits in controlled gate. <br>
 Second parameter is the name of the controlled gate, remainig first qubits become controling. <br>
 Third parameter is the string representing `angle` for the gates where it is necessary.
 ```cpp
-static Matrix	controlled(unsigned, std::string, std::string = "");
+static Matrix controlled(unsigned, std::string, std::string = "");
 ```
 <br>
 For example:
@@ -403,7 +403,7 @@ will produce C-phaseShift gate with angle 1.5 .
 Applies given controlled gate to `this->amplitudes`. <br>
 Returns `true` if this is possible, otherwise returns `false`.
 ```cpp
-static bool		controlled(Qubit&, unsigned, std::string, std::string = "");
+static bool controlled(Qubit&, unsigned, std::string, std::string = "");
 ```
 
 ---
@@ -440,7 +440,7 @@ void reset();
 4. `getAmplitudes`. <br>
 Returns `this->amplitudes`.
 ```cpp
-Matrix				getAmplitudes();
+Matrix getAmplitudes();
 ```
 
 <br>
@@ -448,7 +448,7 @@ Matrix				getAmplitudes();
 5. `getQubitNumber`. <br>
 Returns `this->qubitNumber`.
 ```cpp
-unsigned			getQubitNumber();
+unsigned getQubitNumber();
 ```
 
 <br>
@@ -456,7 +456,7 @@ unsigned			getQubitNumber();
 6. `getProbabilities`. <br>
 Returns vector of qubit states probabilities.
 ```cpp
-std::vector<double>	getProbabilities();
+std::vector<double> getProbabilities();
 ```
 
 <br>
@@ -476,4 +476,3 @@ void printProbabilities();
 ```
 
 ---
-
