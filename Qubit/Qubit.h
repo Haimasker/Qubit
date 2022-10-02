@@ -13,7 +13,6 @@ using namespace std::complex_literals;
 #define MAX_QUBITS 8
 
 class Qubit {
-
 private:
 	unsigned	qubitNumber;
 	Matrix		amplitudes;
@@ -22,9 +21,7 @@ private:
 public:
 	Qubit(unsigned = 0) noexcept;
 	Qubit(const Qubit&) noexcept;
-	Qubit&	operator = (const Qubit&) noexcept;
-	Qubit(const Qubit&&) noexcept;
-	Qubit&	operator = (const Qubit&&) noexcept;
+	Qubit(Qubit&&) noexcept;
 
 	virtual ~Qubit();
 
