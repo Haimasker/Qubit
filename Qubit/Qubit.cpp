@@ -12,38 +12,20 @@ Qubit::Qubit(const Qubit& q) noexcept {
 	this->generator = q.generator;
 }
 
-Qubit& Qubit::operator = (const Qubit& q) noexcept {
-	if (this != &q) {
-		this->qubitNumber = q.qubitNumber;
-		this->amplitudes = q.amplitudes;
-		this->generator = q.generator;
-	}
-	return *this;
-}
-
 Qubit::Qubit(const Qubit&& q) noexcept :
 	qubitNumber(std::exchange(q.qubitNumber, 0)),
 	amplitudes(std::move(q.amplitudes)),
 	generator(std::move(q.generator)) {
 }
 
-Qubit& Qubit::operator = (const Qubit&& q) noexcept {
-	if (this != &q) {
-		std::exchange(this->qubitNumber, q.qubitNumber);
-		this->amplitudes = std::move(q.amplitudes);
-		this->generator = std::move(q.generator);
-	}
-	return *this;
-}
-
 Qubit::~Qubit() {}
 
 std::complex<double>& Qubit::operator () (const unsigned& index) {
-	return this->amplitudes(0, index);
+	return this->amplitudes(0, index % this->amplitudes.getCols());
 }
 
 const std::complex<double>& Qubit::operator () (const unsigned& index) const {
-	return this->amplitudes(0, index);
+	return this->amplitudes(0, index % this->amplitudes.getCols());
 }
 
 Qubit& Qubit::operator = (const Qubit& q) {
