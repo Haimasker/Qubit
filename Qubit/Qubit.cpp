@@ -12,7 +12,7 @@ Qubit::Qubit(const Qubit& q) noexcept {
 	this->generator = q.generator;
 }
 
-Qubit::Qubit(const Qubit&& q) noexcept :
+Qubit::Qubit(Qubit&& q) noexcept :
 	qubitNumber(std::exchange(q.qubitNumber, 0)),
 	amplitudes(std::move(q.amplitudes)),
 	generator(std::move(q.generator)) {
