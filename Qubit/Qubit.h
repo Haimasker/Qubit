@@ -82,7 +82,7 @@ public:
 	static Matrix	controlled(unsigned, std::string, std::string = "");
 	static bool	controlled(Qubit&, unsigned, std::string, std::string = "");
 
-	void measure() const;
+	void measure();
 
 	void printProbabilities() const;
 
