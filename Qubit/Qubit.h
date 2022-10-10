@@ -45,9 +45,9 @@ public:
 	void concentrate(unsigned);
 	void reset();
 
-	Matrix				getAmplitudes();
-	unsigned			getQubitNumber();
-	std::vector<double>		getProbabilities();
+	Matrix				getAmplitudes() const;
+	unsigned			getQubitNumber() const;
+	std::vector<double>		getProbabilities() const;
 
 	static Matrix	identity();
 	static bool	identity(Qubit&);
@@ -82,9 +82,9 @@ public:
 	static Matrix	controlled(unsigned, std::string, std::string = "");
 	static bool	controlled(Qubit&, unsigned, std::string, std::string = "");
 
-	void measure();
+	void measure() const;
 
-	void printProbabilities();
+	void printProbabilities() const;
 
 	friend std::ostream& operator << (std::ostream&, Qubit&);
 };
