@@ -314,7 +314,7 @@ bool Qubit::controlled(Qubit& q, unsigned qubits, std::string gate, std::string 
 	return true;
 }
 
-void Qubit::measure() const {
+void Qubit::measure() {
 	std::vector<double> prob = this->getProbabilities();
 	std::discrete_distribution<int> distribution(prob.begin(), prob.end());
 	std::cout << "|" << std::bitset<MAX_QUBITS>(distribution(this->generator))
