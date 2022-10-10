@@ -112,15 +112,15 @@ void Qubit::reset() {
 	return;
 }
 
-Matrix Qubit::getAmplitudes() {
+Matrix Qubit::getAmplitudes() const {
 	return this->amplitudes;
 }
 
-unsigned Qubit::getQubitNumber() {
+unsigned Qubit::getQubitNumber() const {
 	return this->qubitNumber;
 }
 
-std::vector<double> Qubit::getProbabilities() {
+std::vector<double> Qubit::getProbabilities() const {
 	std::vector<double> res;
 	std::vector<std::complex<double>> ampl = (this->amplitudes).getMat()[0];
 	for (std::complex<double> i : ampl)
@@ -314,7 +314,7 @@ bool Qubit::controlled(Qubit& q, unsigned qubits, std::string gate, std::string 
 	return true;
 }
 
-void Qubit::measure() {
+void Qubit::measure() const {
 	std::vector<double> prob = this->getProbabilities();
 	std::discrete_distribution<int> distribution(prob.begin(), prob.end());
 	std::cout << "|" << std::bitset<MAX_QUBITS>(distribution(this->generator))
@@ -323,7 +323,7 @@ void Qubit::measure() {
 	return;
 }
 
-void Qubit::printProbabilities() {
+void Qubit::printProbabilities() const {
 	std::vector<double> prob = this->getProbabilities();
 	for (double i : prob)
 		std::cout << i << ' ';
